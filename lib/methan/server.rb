@@ -33,6 +33,7 @@ module Methan
     end
 
     ROUTES = {
+      "GET:/style.css" => :style_css,
       "GET:/" => :index,
     }
 
@@ -71,6 +72,12 @@ module Methan
       response = gen_404_response() if response.nil?
       # response finished
       response.finish
+    end
+
+    def get_style_css(req)
+      filepath = File.join(File.dirname(__FILE__), "server/static/style.css")
+      src = File.read(filepath)
+      gen_response(src, 200, {'Content-Type' => 'text/css'})
     end
 
     def get_index(req)
