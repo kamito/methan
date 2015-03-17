@@ -93,6 +93,7 @@ module Methan
         dat
       end
       @files.sort!{|a, b| a[:id] <=> b[:id] }
+      @files.reverse!
       src = File.read(make_template_path("index.html.erb"))
       erb = ERB.new(src)
       body = erb.result(binding)
