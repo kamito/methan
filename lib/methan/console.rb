@@ -23,7 +23,7 @@ module Methan
       pwd = Dir::pwd
 
       filename = "#{filename}.md" unless filename.split(".").last == "md"
-      filename = "#{now}-#{filename}"
+      filename = "#{now}_#{filename}"
       filepath = File.join(pwd, filename)
 
       src = "# #{options[:title] || ''}\n"
