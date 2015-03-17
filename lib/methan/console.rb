@@ -1,12 +1,15 @@
+# -*- coding: utf-8 -*-
 
 require "thor"
 require "methan/version"
+require "methan/server"
 
 
 module Methan
 
 
   class Console < Thor
+
 
     desc "version", "show version"
     def version
@@ -28,6 +31,13 @@ module Methan
         io.write(src)
       end
       show "Create memo `#{filename} at #{pwd}`", :green
+    end
+
+    desc "server", "Run server"
+    option :host, type: :string, desc: "Bind address", aliases: "h", default: ::Methan::Server::DEFAULT_HOST
+    option :port, type: :numeric, desc: "Bind port", aliases: "h", default: ::Methan::Server::DEFAULT_PORT
+    def server
+      ::Methan::Server.rackup(options.dup)
     end
 
 
