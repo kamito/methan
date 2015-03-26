@@ -3,6 +3,7 @@ require "erb"
 require "rack"
 require "redcarpet"
 require "methan/md_renderer"
+require "methan/util"
 
 
 module Methan
@@ -15,17 +16,17 @@ module Methan
     class << self
 
       def rackup(args={})
-        args[:Host] = args.delete(:host) if args[:host]
-        args[:Port] = args.delete(:port) if args[:port]
+        args[:'Host'] = args.delete('host') if args['host']
+        args[:'Port'] = args.delete('port') if args['port']
         options = {
           environment: ENV['RACK_ENV'] || "development",
           pid:         nil,
-          Port:        DEFAULT_PORT,
-          Host:        DEFAULT_HOST,
-          AccessLog:   [],
+          'Port':        DEFAULT_PORT,
+          'Host':        DEFAULT_HOST,
+          'AccessLog':   [],
           config:      File.join(File.dirname(__FILE__), 'server/config.ru'),
         }
-        options.merge!(args)
+        options.update(args.deep_symbolize_keys)
         ENV["RACK_ENV"] = options[:environment]
         Rack::Server.start(options)
       end
