@@ -35,7 +35,7 @@ module Methan
 
     desc "server", "Run server"
     option :host, type: :string, desc: "Bind address", aliases: "h", default: ::Methan::Server::DEFAULT_HOST
-    option :port, type: :numeric, desc: "Bind port", aliases: "h", default: ::Methan::Server::DEFAULT_PORT
+    option :port, type: :numeric, desc: "Bind port", aliases: "p", default: ::Methan::Server::DEFAULT_PORT
     def server
       ::Methan::Server.rackup(options.dup)
     end
