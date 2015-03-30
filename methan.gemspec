@@ -9,10 +9,6 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Shinichirow KAMITO"]
   spec.email         = ["shinichirow@kamito.net"]
 
-  if spec.respond_to?(:metadata)
-    spec.metadata['allowed_push_host'] = "TODO: Set to 'http://mygemserver.com' to prevent pushes to rubygems.org, or delete to allow pushes to any server."
-  end
-
   spec.summary       = %q{Methan is a memo organizer.}
   spec.description   = %q{Methan is a memo organizer.}
   spec.homepage      = "TODO: Put your gem's website or public repo URL here."
