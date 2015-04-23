@@ -1,3 +1,4 @@
+# coding: utf-8
 
 class Hash
   def symbolize_keys
