@@ -123,11 +123,11 @@ module Methan
       # bindings
       @file_id  = file_id
       @filename = filename
-      @src = File.read(filepath)
+      @src = File.read(filepath).force_encoding('utf-8')
       @html = markdown_to_html(@src)
 
       # to html
-      src = File.read(make_template_path("show.html.erb"))
+      src = File.read(make_template_path("show.html.erb")).force_encoding('utf-8')
       erb = ERB.new(src)
       body = erb.result(binding)
       return gen_response(body)
