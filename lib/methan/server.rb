@@ -96,7 +96,7 @@ module Methan
         }
         File.open(file) do |f|
           title = f.gets
-          title = title.gsub(/^\#\s+/, "").gsub(/\s+\#$/, "").strip
+          title = title.force_encoding('utf-8').gsub(/^\#\s+/, "").gsub(/\s+\#$/, "").strip
           dat[:title] = title
         end
         dat
