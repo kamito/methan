@@ -3,7 +3,7 @@
 require 'methan/server'
 
 use Rack::Static, {
-  urls: ["/static"],
-  root: Dir::pwd,
-}
-run Methan::Server.new
+      urls: ["/static"],
+      root: Dir::pwd,
+    }
+run Rack::Cascade.new([Rack::File.new("./"), Methan::Server.new])
